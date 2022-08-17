@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="CircularLinkedList">
+      <UniqueIdentifier>{171a088f-87e4-48a6-b42f-de85538c8303}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Essentials">
+      <UniqueIdentifier>{132ad429-3d6b-40a9-a0da-fab91ba79c22}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="DoubleLinkedList">
+      <UniqueIdentifier>{3b5a41d4-2ae0-422c-b859-7835722c1846}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="linked_list.h">
+      <Filter>Essentials</Filter>
+    </ClInclude>
+    <ClInclude Include="looped_list.h">
+      <Filter>CircularLinkedList</Filter>
+    </ClInclude>
+    <ClInclude Include="double_linked_list.h">
+      <Filter>DoubleLinkedList</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="linked_list.c">
+      <Filter>Essentials</Filter>
+    </ClCompile>
+    <ClCompile Include="looped_list.c">
+      <Filter>CircularLinkedList</Filter>
+    </ClCompile>
+    <ClCompile Include="double_linked_list.c">
+      <Filter>DoubleLinkedList</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>

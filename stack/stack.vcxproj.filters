@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="essentials">
+      <UniqueIdentifier>{7b5f24d0-8e54-44e5-9e74-6e91d03e01f2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Problems">
+      <UniqueIdentifier>{f99ff333-1b24-4089-b7c3-191cd1d09e45}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="stack.h">
+      <Filter>essentials</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="stack_array.c">
+      <Filter>essentials</Filter>
+    </ClCompile>
+    <ClCompile Include="stack.c">
+      <Filter>essentials</Filter>
+    </ClCompile>
+    <ClCompile Include="paranthesis_matching.c">
+      <Filter>Problems</Filter>
+    </ClCompile>
+    <ClCompile Include="infix_to_postfix.c">
+      <Filter>Problems</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>

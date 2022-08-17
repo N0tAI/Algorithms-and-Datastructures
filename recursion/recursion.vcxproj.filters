@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Recursive Solutions">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="Recursive Types">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="recursion_example.c">
+      <Filter>Recursive Types</Filter>
+    </ClCompile>
+    <ClCompile Include="indirect_recursion.c">
+      <Filter>Recursive Types</Filter>
+    </ClCompile>
+    <ClCompile Include="nested_recursion.c">
+      <Filter>Recursive Types</Filter>
+    </ClCompile>
+    <ClCompile Include="head_recursion.c">
+      <Filter>Recursive Types</Filter>
+    </ClCompile>
+    <ClCompile Include="tail_recursion.c">
+      <Filter>Recursive Types</Filter>
+    </ClCompile>
+    <ClCompile Include="tree_recursion.c">
+      <Filter>Recursive Types</Filter>
+    </ClCompile>
+    <ClCompile Include="sum_of_natural_numbers.c">
+      <Filter>Recursive Solutions</Filter>
+    </ClCompile>
+    <ClCompile Include="factorial.c">
+      <Filter>Recursive Solutions</Filter>
+    </ClCompile>
+    <ClCompile Include="powers.c">
+      <Filter>Recursive Solutions</Filter>
+    </ClCompile>
+    <ClCompile Include="tailor_series.c">
+      <Filter>Recursive Solutions</Filter>
+    </ClCompile>
+    <ClCompile Include="tailor_series_horner.c">
+      <Filter>Recursive Solutions</Filter>
+    </ClCompile>
+    <ClCompile Include="fibonacci.c">
+      <Filter>Recursive Solutions</Filter>
+    </ClCompile>
+    <ClCompile Include="ncr.c">
+      <Filter>Recursive Solutions</Filter>
+    </ClCompile>
+    <ClCompile Include="tower_of_hanoi.c">
+      <Filter>Recursive Solutions</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>
