@@ -3,6 +3,18 @@
 #include <stdlib.h>
 #include "stack.h"
 
+int precedence(char x) {
+	if (x == '+' || x == '-')
+		return 1;
+	else if (x == '*' || x == '/')
+		return 2;
+	return 0;
+}
+
+int is_number(char x) {
+	return precedence(x) == 0;
+}
+
 char* convert(char* infix_str) {
 	if (infix_str == NULL)
 		return NULL;
@@ -22,7 +34,7 @@ char* convert(char* infix_str) {
 		size_t infix_index = 0;
 		size_t postfix_index = 0;
 		while(infix_str[infix_index] != '\0') {
-			if (is_operand(infix_str[infix_index]))
+			if (is_number(infix_str[infix_index]))
 				postfix[postfix_index++] = infix_str[infix_index++];
 			else {
 				if (precedence(infix_str[infix_index]) > precedence(stack->top))
@@ -38,16 +50,4 @@ char* convert(char* infix_str) {
 	}
 
 	return postfix;
-}
-
-int precedence(char x) {
-	if (x == '+' || x == '-')
-		return 1;
-	else if (x == '*' || x == '/')
-		return 2;
-	return 0;
-}
-
-int is_operand(char x) {
-	return precedence > 0;
 }

@@ -26,5 +26,8 @@
     <ClCompile Include="infix_to_postfix.c">
       <Filter>Problems</Filter>
     </ClCompile>
+    <ClCompile Include="postfix_evaluation.c">
+      <Filter>Problems</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
