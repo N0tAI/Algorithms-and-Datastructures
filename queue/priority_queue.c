@@ -1,5 +1,3 @@
-// Undone
-
 #include <stddef.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -17,6 +15,13 @@ typedef struct {
 	QueueNode* end;
 } Queue;
 
+// This is a single 'easy' way to implement
+// however we could create a priority queue as a sorted list which sorts based off of the rule for an added priority element
+typedef struct {
+	size_t priority_count;
+	Queue** queues;
+} PriorityQueue;
+
 QueueNode* create_queue_node(const int value) {
 	QueueNode* node = (QueueNode*)malloc(sizeof(QueueNode));
 
@@ -32,7 +37,7 @@ Queue* create_queue(const int* array, const size_t size) {
 	Queue* queue = (Queue*)malloc(sizeof(Queue));
 
 	if (queue != NULL) {
-		if (size > 0) {
+		if (size > 0 && array != NULL) {
 			for (size_t i = 0; i < size; i++)
 				enqueue(queue, array[i]);
 		}
@@ -43,6 +48,29 @@ Queue* create_queue(const int* array, const size_t size) {
 	}
 
 	return queue;
+}
+
+PriorityQueue* create_priority(const size_t priorities) {
+	if (priorities < 1)
+		return NULL;
+
+	PriorityQueue* pqueue = (PriorityQueue*)malloc(sizeof(PriorityQueue));
+
+	if (pqueue != NULL) {
+		Queue** priority_queues = (Queue**)malloc(sizeof(Queue) * priorities);
+		if (priority_queues == NULL) {
+			free(pqueue);
+			return NULL;
+		}
+
+		for (size_t i = 0; i < priority_queues; i++)
+			priority_queues[i] = create_queue(NULL, 0);
+		
+		pqueue->priority_count = priorities;
+		pqueue->queues = priority_queues;
+	}
+
+	return pqueue;
 }
 
 
@@ -64,6 +92,13 @@ void enqueue(Queue* queue, const int value) {
 	}
 }
 
+void enqueue_priority(PriorityQueue* queue, const size_t priority, const int value) {
+	if (priority > queue->priority_count)
+		return;
+
+	enqueue(queue->queues[priority - 1], value);
+}
+
 void push(Queue* queue, const int value) {
 	QueueNode* node = create_queue_node(value);
 
@@ -82,6 +117,13 @@ void push(Queue* queue, const int value) {
 	}
 }
 
+void push_priority(PriorityQueue* queue, const size_t priority, const int value) {
+	if (priority > queue->priority_count)
+		return;
+
+	push(queue->queues[priority - 1], value);
+}
+
 // remove from front
 int pop(Queue* queue) {
 	if (queue->front == NULL)
@@ -95,6 +137,12 @@ int pop(Queue* queue) {
 	free(node);
 
 	return value;
+}
+
+int next(PriorityQueue* queue) {
+	for (size_t i = 0; i < queue->priority_count; i++)
+		if (queue->queues[i]->front != NULL)
+			return pop(queue->queues[i]);
 }
 
 // remove from back
