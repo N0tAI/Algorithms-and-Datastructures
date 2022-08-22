@@ -23,4 +23,9 @@
       <Filter>essentials</Filter>
     </ClCompile>
   </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="double_linked_queue.h">
+      <Filter>essentials</Filter>
+    </ClInclude>
+  </ItemGroup>
 </Project>

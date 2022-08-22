@@ -2,5 +2,3 @@
 // leftmost to right most
 // 
 // ie this would mean that an array is best suited for a binary tree when the binary tree will NOT put any holes in the array storing the nodes
-
-

@@ -1,22 +1,12 @@
+#ifndef THAYBURTDOUBLEQUEUEIMPL
+#define THAYBURTDOUBLEQUEUEIMPL
 #include <stddef.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include "double_linked_queue.h"
 
-struct _QueueNode {
-	int value;
-	struct _QueueNode* prev;
-	struct _QueueNode* next;
-};
-
-typedef struct _QueueNode QueueNode;
-
-typedef struct {
-	QueueNode* front;
-	QueueNode* end;
-} Queue;
-
-QueueNode* create_queue_node(const int value) {
-	QueueNode* node = (QueueNode*)malloc(sizeof(QueueNode));
+double_queue_node_t* create_double_queue_node(const void* value) {
+	double_queue_node_t* node = (double_queue_node_t*)malloc(sizeof(double_queue_node_t));
 
 	if (node != NULL) {
 		node->value = value;
@@ -26,8 +16,8 @@ QueueNode* create_queue_node(const int value) {
 
 	return node;
 }
-Queue* create_queue(const int* array, const size_t size) {
-	Queue* queue = (Queue*)malloc(sizeof(Queue));
+double_queue_t* create_double_queue(const void** array, const size_t size) {
+	double_queue_t* queue = (double_queue_t*)malloc(sizeof(double_queue_t));
 
 	if (queue != NULL) {
 		if (size > 0) {
@@ -43,9 +33,13 @@ Queue* create_queue(const int* array, const size_t size) {
 	return queue;
 }
 
+void init_double_queue(double_queue_t* queue) {
+	queue->end = NULL;
+	queue->front = NULL;
+}
 
-void enqueue(Queue* queue, const int value) {
-	QueueNode* node = create_queue_node(value);
+void enqueue_double(double_queue_t* queue, const void* value) {
+	double_queue_node_t* node = create_double_queue_node(value);
 
 	if (node == NULL)
 		return;
@@ -62,8 +56,8 @@ void enqueue(Queue* queue, const int value) {
 	}
 }
 
-void push(Queue* queue, const int value) {
-	QueueNode* node = create_queue_node(value);
+void push_double(double_queue_t* queue, const void* value) {
+	double_queue_node_t* node = create_double_queue_node(value);
 
 	if (node == NULL)
 		return;
@@ -81,11 +75,11 @@ void push(Queue* queue, const int value) {
 }
 
 // remove from front
-int pop(Queue* queue) {
+void* pop_double(double_queue_t* queue) {
 	if (queue->front == NULL)
 		return -1;
 
-	QueueNode* node = queue->front;
+	double_queue_node_t* node = queue->front;
 	int value = node->value;
 	
 	queue->front = node->next;
@@ -96,11 +90,11 @@ int pop(Queue* queue) {
 }
 
 // remove from back
-int dequeue(Queue* queue) {
+void* dequeue_double(double_queue_t* queue) {
 	if (queue->end == NULL)
 		return -1;
 
-	QueueNode* node = queue->end;
+	double_queue_node_t* node = queue->end;
 	int value = node->value;
 
 	queue->end = node->next;
@@ -110,18 +104,20 @@ int dequeue(Queue* queue) {
 	return value;
 }
 
-int is_empty(Queue* queue) {
+void* is_empty_double_queue(double_queue_t* queue) {
 	return queue->front == NULL;
 }
 
-int peek_first(const Queue* queue) {
+void* peek_first(const double_queue_t* queue) {
 	if (queue->front == NULL)
 		return -1;
 	return queue->front->value;
 }
 
-int peek_last(const Queue* queue) {
+void* peek_last(const double_queue_t* queue) {
 	if (queue->end == NULL)
 		return -1;
 	return queue->end->value;
 }
+
+#endif

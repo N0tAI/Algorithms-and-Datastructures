@@ -145,6 +145,9 @@
     <ClCompile Include="priority_queue.c" />
     <ClCompile Include="queue_array.c" />
   </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="double_linked_queue.h" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

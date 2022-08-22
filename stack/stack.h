@@ -3,7 +3,7 @@
 #include <stddef.h>
 
 struct _StackNode {
-	int value;
+	void* value;
 	struct _StackNode* next;
 };
 
@@ -14,15 +14,16 @@ typedef struct {
 	StackNode* top;
 } Stack;
 
-StackNode* create_stack_node(const int value);
-Stack* create_stack(const int* array, const size_t size);
+StackNode* create_stack_node(const void* value);
+Stack* create_stack(const void** array, const size_t size);
+void init_stack(Stack* stack);
 
 void delete_stack_node(StackNode* node);
 void rdelete_stack_node(StackNode* node);
 void delete_stack(Stack* stack);
 
-int peek(const Stack* stack, const size_t index);
-int pop(Stack* stack);
-void push(Stack* stack, const int value);
+void* peek(const Stack* stack, const size_t index);
+void* pop(Stack* stack);
+void push(Stack* stack, const void* value);
 
 #endif

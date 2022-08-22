@@ -3,7 +3,7 @@
 #include <stdio.h>
 #include "stack.h"
 
-StackNode* create_stack_node(const int value) {
+StackNode* create_stack_node(const void* value) {
 	StackNode* node = (StackNode*)malloc(sizeof(StackNode*));
 
 	if (node != NULL) {
@@ -14,16 +14,25 @@ StackNode* create_stack_node(const int value) {
 	return node;
 }
 
-Stack* create_stack(const int* array, const size_t size) {
+Stack* create_stack(const void** array, const size_t size) {
 	Stack* stack = (Stack*)malloc(sizeof(Stack*));
 
 	if (stack != NULL) {
+		init_stack(stack);
 		stack->top = NULL;
 		for (size_t i = size - 1; i < size; i--)
 			push(stack, array[size - i - 1]);
 	}
 
 	return stack;
+}
+
+
+void init_stack(Stack* stack) {
+	if (stack != NULL) {
+		stack->top = NULL;
+		stack->length = 0;
+	}
 }
 
 void delete_stack_node(StackNode* node) {
@@ -43,7 +52,7 @@ void delete_stack(Stack* stack) {
 	free(stack);
 }
 
-int peek(const Stack* stack, const size_t index) {
+void* peek(const Stack* stack, const size_t index) {
 	StackNode* node = stack->top;
 
 	for (size_t i = 1; i < index; i++)
@@ -52,7 +61,10 @@ int peek(const Stack* stack, const size_t index) {
 	return node->value;
 }
 
-int pop(Stack* stack) {
+void* pop(Stack* stack) {
+	if (stack->top == NULL)
+		return NULL;
+
 	StackNode* node = stack->top;
 	int value = node->value;
 
@@ -64,7 +76,7 @@ int pop(Stack* stack) {
 	return value;
 }
 
-void push(Stack* stack, const int value) {
+void push(Stack* stack, const void* value) {
 	StackNode* node = create_stack_node(value);
 
 	if (node != NULL) {

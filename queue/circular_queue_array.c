@@ -1,3 +1,5 @@
+#ifndef THAYBURTQUEUEIMPL
+#define THAYBURTQUEUEIMPL
 #include <stddef.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -64,3 +66,5 @@ int peek_last(const Queue* queue) {
 int peek_first(const Queue* queue) {
 	return *queue->delete;
 }
+
+#endif
