@@ -2,28 +2,27 @@
 #define THAYBURTSTACKUTILS
 #include <stddef.h>
 
-struct _StackNode {
+struct _stack_node {
 	void* value;
-	struct _StackNode* next;
+	struct _stack_node* next;
 };
 
-typedef struct _StackNode StackNode;
+typedef struct _stack_node stack_node_t;
 
 typedef struct {
 	size_t length;
-	StackNode* top;
-} Stack;
+	stack_node_t* top;
+} stack_t;
 
-StackNode* create_stack_node(const void* value);
-Stack* create_stack(const void** array, const size_t size);
-void init_stack(Stack* stack);
+stack_node_t* create_stack_node(void* value);
+stack_t* create_stack(void** array, size_t size);
+void init_stack(stack_t* stack);
 
-void delete_stack_node(StackNode* node);
-void rdelete_stack_node(StackNode* node);
-void delete_stack(Stack* stack);
+void delete_stack_node(stack_node_t* node);
+void rdelete_stack_node(stack_node_t* node);
+void delete_stack(stack_t* stack);
 
-void* peek(const Stack* stack, const size_t index);
-void* pop(Stack* stack);
-void push(Stack* stack, const void* value);
-
+void* peek(const stack_t* stack, const size_t index);
+void* pop(stack_t* stack);
+void push(stack_t* stack, void* value);
 #endif

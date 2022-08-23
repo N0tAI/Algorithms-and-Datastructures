@@ -21,8 +21,8 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{de694c83-86eb-4378-973f-26fbad25acf2}</ProjectGuid>
-    <RootNamespace>trees</RootNamespace>
+    <ProjectGuid>{10d07cf3-1c87-4048-9fbf-bfeb4fc146df}</ProjectGuid>
+    <RootNamespace>binarysearchtree</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -139,14 +139,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <Text Include="math" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="binary_tree_array.c" />
-    <ClCompile Include="binary_tree_linked.c" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="binary_tree_linked.h" />
+    <ClCompile Include="avl_tree.cpp" />
+    <ClCompile Include="binary_search_tree.c" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

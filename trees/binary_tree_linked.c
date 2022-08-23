@@ -12,14 +12,17 @@ typedef struct _TreeNode {
 
 typedef struct _TreeNode TreeNode;
 
+void init_tree_node(TreeNode* node, const int value) {
+	node->value = value;
+	node->left = NULL;
+	node->right = NULL;
+}
+
 TreeNode* create_tree_node(const int value) {
 	TreeNode* node = (TreeNode*)malloc(sizeof(TreeNode));
 
-	if (node != NULL) {
-		node->value = value;
-		node->left = NULL;
-		node->right = NULL;
-	}
+	if (node != NULL)
+		init_tree_node(node, value);
 
 	return node;
 }
@@ -157,7 +160,7 @@ void display_postorder_iter(const TreeNode* root) {
 	} while (stack.top != NULL);
 }
 
-void display_level_order(const TreeNode* root, Stack* stack) {
+void rdisplay_level_order(const TreeNode* root, Stack* stack) {
 	if (root == NULL || stack == NULL)
 		return;
 
@@ -168,17 +171,17 @@ void display_level_order(const TreeNode* root, Stack* stack) {
 	
 	printf("%d, ", root->value);
 
-	display_level_order(pop(stack), stack);
+	rdisplay_level_order(pop(stack), stack);
 }
 
-void call_display_level_order(const TreeNode* root) {
+void display_level_order(const TreeNode* root) {
 	if (root == NULL)
 		return;
 
 	Stack stack;
 	init_stack(&stack);
 
-	display_level_order(root, &stack);
+	rdisplay_level_order(root, &stack);
 }
 
 void display_level_order_iter(const TreeNode* root) {

@@ -5,26 +5,13 @@
       <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
       <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
     </Filter>
-    <Filter Include="info">
-      <UniqueIdentifier>{64b72ec2-280c-4cb9-82db-8ecc5ea6a66a}</UniqueIdentifier>
-    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <Text Include="math">
-      <Filter>info</Filter>
-    </Text>
-  </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="binary_tree_array.c">
+    <ClCompile Include="binary_search_tree.c">
       <Filter>essentials</Filter>
     </ClCompile>
-    <ClCompile Include="binary_tree_linked.c">
+    <ClCompile Include="avl_tree.cpp">
       <Filter>essentials</Filter>
     </ClCompile>
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="binary_tree_linked.h">
-      <Filter>essentials</Filter>
-    </ClInclude>
   </ItemGroup>
 </Project>
