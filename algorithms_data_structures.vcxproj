@@ -117,7 +117,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <LanguageStandard>stdcpp17</LanguageStandard>
+      <LanguageStandard>stdcpp20</LanguageStandard>
       <LanguageStandard_C>stdc17</LanguageStandard_C>
     </ClCompile>
     <Link>
@@ -133,7 +133,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <LanguageStandard>stdcpp17</LanguageStandard>
+      <LanguageStandard>stdcpp20</LanguageStandard>
       <LanguageStandard_C>stdc17</LanguageStandard_C>
     </ClCompile>
     <Link>
@@ -148,30 +148,7 @@
     <ClCompile Include="array.cpp" />
     <ClCompile Include="array_class_version.cpp" />
     <ClCompile Include="array_declarations.c" />
-    <ClCompile Include="counting_words.c" />
-    <ClCompile Include="diagonal_matrix.cpp" />
-    <ClCompile Include="lower_triangular_matrix.cpp" />
-    <ClCompile Include="matrix_base.cpp" />
-    <ClCompile Include="find_dupl.c" />
-    <ClCompile Include="polynomials.c" />
-    <ClCompile Include="sparse_matrix.cpp" />
     <ClCompile Include="static_vs_dynamic_array.c" />
-    <ClCompile Include="string_compare.c" />
-    <ClCompile Include="string_permutations.c" />
-    <ClCompile Include="string_reverse.c" />
-    <ClCompile Include="symmetric_matrix.cpp" />
-    <ClCompile Include="toeplitz_matrix.cpp" />
-    <ClCompile Include="tri_diagonal_tri_band_matrix.c" />
-    <ClCompile Include="upper_triangular_matrix.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="diagonal_matrix.hpp" />
-    <ClInclude Include="lower_triangular_matrix.hpp" />
-    <ClInclude Include="matrix.hpp" />
-    <ClInclude Include="sparse_matrix.hpp" />
-    <ClInclude Include="symmetric_matrix.hpp" />
-    <ClInclude Include="toeplitz_matrix.hpp" />
-    <ClInclude Include="upper_triangular_matrix.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

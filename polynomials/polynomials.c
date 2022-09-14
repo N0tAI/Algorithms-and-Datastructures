@@ -1,30 +1,29 @@
 #include <stdio.h>
-#include<stdlib.h>
-struct Term
+#include <stdlib.h>
+typedef struct
 {
 	int coeff;
 	int exp;
-};
-struct Poly
+} Term;
+typedef struct
 {
 	int n;
-	struct Term* terms;
-};
-void create(struct Poly* p)
+	Term* terms;
+} Polynomial;
+
+void create(Polynomial* p)
 {
 	int i;
 	printf("Number of terms?");
 	scanf("%d", &p->n);
-	p->terms = (struct Term*)malloc(p->n * sizeof(struct
-		Term));
+	p->terms = (struct Term*)malloc(p->n * sizeof(Term));
 
 	printf("Enter terms\n");
 	for (i = 0; i < p->n; i++)
-		scanf("%d%d", &p->terms[i].coeff, &p -
-	> terms[i].exp);
+		scanf("%d%d", &p->terms[i].coeff, &p -> terms[i].exp);
 
 }
-void display(struct Poly p)
+void display(Polynomial p)
 {
 	int i;
 	for (i = 0; i < p.n; i++)
@@ -32,12 +31,13 @@ void display(struct Poly p)
 		printf("%dx%d+", p.terms[i].coeff, p.terms[i].exp);
 	printf("\n");
 }
-struct Poly* add(struct Poly* p1, struct Poly* p2)
+
+Polynomial* add(Polynomial* p1, Polynomial* p2)
 {
 	int i, j, k;
-	struct Poly* sum;
+	Polynomial* sum;
 
-	sum = (struct Poly*)malloc(sizeof(struct Poly));
+	sum = (Polynomial*)malloc(sizeof(Polynomial));
 	sum->terms = (struct Term*)malloc((p1->n + p2 -
 	> n) * sizeof(struct Term));
 	i = j = k = 0;
@@ -59,6 +59,4 @@ struct Poly* add(struct Poly* p1, struct Poly* p2)
 
 	sum->n = k;
 	return sum;
-
-
 }

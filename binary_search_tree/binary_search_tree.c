@@ -9,8 +9,8 @@
 #include "../stack/stack.h"
 #include "../trees/binary_tree_linked.h"
 
-TreeNode* bst_search(const TreeNode* root, const int value) {
-	TreeNode* current = root;
+tree_node_t* bst_search(tree_node_t* root, int value) {
+	tree_node_t* current = root;
 	while (current != NULL) {
 		if (current->value == value)
 			return current;
@@ -21,12 +21,12 @@ TreeNode* bst_search(const TreeNode* root, const int value) {
 	}
 }
 
-TreeNode* bst_insert(const TreeNode* root, const int value) {
+tree_node_t* bst_insert(tree_node_t* root, int value) {
 	if (root == NULL)
 		return create_tree_node(value);
 	
-	TreeNode* current = root;
-	TreeNode* prev = NULL;
+	tree_node_t* current = root;
+	tree_node_t* prev = NULL;
 	do {
 		prev = current;
 		if (current->value < value)
@@ -44,37 +44,52 @@ TreeNode* bst_insert(const TreeNode* root, const int value) {
 	return current;
 }
 
-TreeNode* bst_delete(const TreeNode* root) {
+tree_node_t* bst_delete(tree_node_t* root, void* value) {
 	if (root == NULL)
 		return root;
 
-	TreeNode* current = root;
+	tree_node_t* current = root;
+	tree_node_t* previous = NULL;
+
+	while(current != NULL && current->value != value) {
+		previous = current;
+		if (current->value < value)
+			current = current->left;
+		else
+			current = current->right;
+	}
+
+	if (current != NULL) {
+		// move any subtree elements around
+	}
+
+	return current;
 }
 
-TreeNode* bst_from_preorder(const int array[], const size_t array_size) {
+tree_node_t* bst_from_preorder(int array[], size_t array_size) {
 	if (array == NULL || array_size < 1)
 		return NULL;
 
-	const TreeNode* root = create_tree_node(array[0]);
+	const tree_node_t* root = create_tree_node(array[0]);
 	if (array_size == 1 || root == NULL)
 		return root;
 
-	TreeNode* current = root;
-	Stack* stack = create_stack(NULL, 0);
+	tree_node_t* current = root;
+	stack_t* stack = create_stack(NULL, 0);
 	if (stack == NULL)
 		return current;
 
 	size_t index = 1;
 	while (index < array_size) {
 		if (array[index] < current->value) {
-			TreeNode* temp = create_tree_node(array[index++]);
+			tree_node_t* temp = create_tree_node(array[index++]);
 			current->left = temp;
 			push(stack, current);
 			current = temp;
 		}
 		else {
-			if (array[index] > current->value && stack->top != NULL && ((TreeNode*)stack->top)->value > array[index]) {
-				TreeNode* temp = create_tree_node(array[index++]);
+			if (array[index] > current->value && stack->top != NULL && ((tree_node_t*)stack->top)->value > array[index]) {
+				tree_node_t* temp = create_tree_node(array[index++]);
 				current->right = temp;
 				current = temp;
 			}
@@ -86,11 +101,11 @@ TreeNode* bst_from_preorder(const int array[], const size_t array_size) {
 	return root;
 }
 
-TreeNode* bst_from_inorder(const int array[], const size_t array_size) {
+tree_node_t* bst_from_inorder(int array[], size_t array_size) {
 
 }
 
-TreeNode* bst_from_postorder(const int array[], const size_t array_size) {
+tree_node_t* bst_from_postorder(int array[], size_t array_size) {
 
 }
 #endif

@@ -7,18 +7,6 @@
     <Filter Include="ArraysADT">
       <UniqueIdentifier>{6e4ed1a5-b3db-4ee6-b8f9-758f8976dc7a}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Strings">
-      <UniqueIdentifier>{956c0262-1d5c-46fb-b710-fd57702d8437}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Matrices">
-      <UniqueIdentifier>{cda5a556-ef7a-4671-943b-d2aaf7b1916d}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Matrices\Headers">
-      <UniqueIdentifier>{99367699-dee1-4c8e-98d5-7e37bd4dd2de}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Polynomial">
-      <UniqueIdentifier>{d2add645-883c-4ce0-9467-0786bda17b51}</UniqueIdentifier>
-    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="array_declarations.c">
@@ -36,70 +24,5 @@
     <ClCompile Include="array_class_version.cpp">
       <Filter>ArraysADT</Filter>
     </ClCompile>
-    <ClCompile Include="counting_words.c">
-      <Filter>Strings</Filter>
-    </ClCompile>
-    <ClCompile Include="string_reverse.c">
-      <Filter>Strings</Filter>
-    </ClCompile>
-    <ClCompile Include="string_compare.c">
-      <Filter>Strings</Filter>
-    </ClCompile>
-    <ClCompile Include="find_dupl.c">
-      <Filter>Strings</Filter>
-    </ClCompile>
-    <ClCompile Include="string_permutations.c">
-      <Filter>Strings</Filter>
-    </ClCompile>
-    <ClCompile Include="matrix_base.cpp">
-      <Filter>Matrices</Filter>
-    </ClCompile>
-    <ClCompile Include="tri_diagonal_tri_band_matrix.c">
-      <Filter>Matrices</Filter>
-    </ClCompile>
-    <ClCompile Include="toeplitz_matrix.cpp">
-      <Filter>Matrices</Filter>
-    </ClCompile>
-    <ClCompile Include="diagonal_matrix.cpp">
-      <Filter>Matrices</Filter>
-    </ClCompile>
-    <ClCompile Include="lower_triangular_matrix.cpp">
-      <Filter>Matrices</Filter>
-    </ClCompile>
-    <ClCompile Include="upper_triangular_matrix.cpp">
-      <Filter>Matrices</Filter>
-    </ClCompile>
-    <ClCompile Include="symmetric_matrix.cpp">
-      <Filter>Matrices</Filter>
-    </ClCompile>
-    <ClCompile Include="sparse_matrix.cpp">
-      <Filter>Matrices</Filter>
-    </ClCompile>
-    <ClCompile Include="polynomials.c">
-      <Filter>Polynomial</Filter>
-    </ClCompile>
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="matrix.hpp">
-      <Filter>Matrices\Headers</Filter>
-    </ClInclude>
-    <ClInclude Include="diagonal_matrix.hpp">
-      <Filter>Matrices\Headers</Filter>
-    </ClInclude>
-    <ClInclude Include="lower_triangular_matrix.hpp">
-      <Filter>Matrices\Headers</Filter>
-    </ClInclude>
-    <ClInclude Include="upper_triangular_matrix.hpp">
-      <Filter>Matrices\Headers</Filter>
-    </ClInclude>
-    <ClInclude Include="symmetric_matrix.hpp">
-      <Filter>Matrices\Headers</Filter>
-    </ClInclude>
-    <ClInclude Include="toeplitz_matrix.hpp">
-      <Filter>Matrices\Headers</Filter>
-    </ClInclude>
-    <ClInclude Include="sparse_matrix.hpp">
-      <Filter>Matrices\Headers</Filter>
-    </ClInclude>
   </ItemGroup>
 </Project>

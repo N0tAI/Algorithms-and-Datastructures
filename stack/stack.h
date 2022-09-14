@@ -25,4 +25,5 @@ void delete_stack(stack_t* stack);
 void* peek(const stack_t* stack, const size_t index);
 void* pop(stack_t* stack);
 void push(stack_t* stack, void* value);
+
 #endif

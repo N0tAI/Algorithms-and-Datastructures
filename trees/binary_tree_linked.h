@@ -1,32 +1,32 @@
 #ifndef THAYBURTBINARYTREE
 #define THAYBURTBINARYTREE
 
-typedef struct _TreeNode {
-	struct _TreeNode* left;
-	struct _TreeNode* right;
-	int value;
+typedef struct tree_node {
+	struct tree_node* left;
+	struct tree_node* right;
+	void* value;
 };
 
-typedef struct _TreeNode TreeNode;
+typedef struct tree_node tree_node_t;
 
-void init_tree_node(TreeNode* node, const int value);
-TreeNode* create_tree_node(const int value);
-TreeNode* create_tree(int array[], size_t array_size);
+void init_tree_node(tree_node_t* node, const void* value);
+tree_node_t* create_tree_node(const void* value);
+tree_node_t* create_tree(void* array[], size_t array_size);
 
-void display_preorder(TreeNode* root);
-void display_inorder(TreeNode* root);
-void display_postorder(TreeNode* root);
-void display_preorder_iter(const TreeNode* root);
-void display_inorder_iter(const TreeNode* root);
-void display_postorder_iter(const TreeNode* root);
-void display_level_order(const TreeNode* root);
-void display_level_order_iter(const TreeNode* root);
+void display_preorder(tree_node_t* root);
+void display_inorder(tree_node_t* root);
+void display_postorder(tree_node_t* root);
+void display_preorder_iter(const tree_node_t* root);
+void display_inorder_iter(const tree_node_t* root);
+void display_postorder_iter(const tree_node_t* root);
+void display_level_order(const tree_node_t* root);
+void display_level_order_iter(const tree_node_t* root);
 
-size_t tree_height_iter(const TreeNode* root);
-size_t tree_height(const TreeNode* root);
-size_t tree_count_iter(const TreeNode* root);
-size_t tree_count(const TreeNode* root);
-size_t count_leaf_nodes(const TreeNode* root);
-size_t count_leaf_nodes_iter(const TreeNode* root);
+size_t tree_height_iter(const tree_node_t* root);
+size_t tree_height(const tree_node_t* root);
+size_t tree_count_iter(const tree_node_t* root);
+size_t tree_count(const tree_node_t* root);
+size_t count_leaf_nodes(const tree_node_t* root);
+size_t count_leaf_nodes_iter(const tree_node_t* root);
 
 #endif

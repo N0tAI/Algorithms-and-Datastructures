@@ -4,22 +4,22 @@
 #include "../queue/double_linked_queue.h"
 #include "../stack/stack.h"
 
-typedef struct _TreeNode {
-	struct _TreeNode* left;
-	struct _TreeNode* right;
-	int value;
+typedef struct _tree_node_t {
+	struct _tree_node_t* left;
+	struct _tree_node_t* right;
+	void* value;
 };
 
-typedef struct _TreeNode TreeNode;
+typedef struct _tree_node_t tree_node_t;
 
-void init_tree_node(TreeNode* node, const int value) {
+void init_tree_node(tree_node_t* node, const void* value) {
 	node->value = value;
 	node->left = NULL;
 	node->right = NULL;
 }
 
-TreeNode* create_tree_node(const int value) {
-	TreeNode* node = (TreeNode*)malloc(sizeof(TreeNode));
+tree_node_t* create_tree_node(const void* value) {
+	tree_node_t* node = (tree_node_t*)malloc(sizeof(tree_node_t));
 
 	if (node != NULL)
 		init_tree_node(node, value);
@@ -27,31 +27,31 @@ TreeNode* create_tree_node(const int value) {
 	return node;
 }
 
-TreeNode* create_tree(int array[], size_t array_size) {
+tree_node_t* create_tree(void* array[], size_t array_size) {
 	double_queue_t queue = { .front = NULL, .end = NULL };
 
-	TreeNode* root = create_tree_node(0);
+	tree_node_t* root = create_tree_node(0);
 	if (array != NULL && array_size > 0) {
 		root->value = array[0];
 		enqueue(&queue, root);
 
 		size_t current_index = 1;
 		while (!is_empty(&queue)) {
-			TreeNode* current = dequeue(&queue);
+			tree_node_t* current = dequeue(&queue);
 
 			if (current == NULL)
 				continue;
 			
 			size_t child_index = current_index * 2 - 1;
 			if (child_index < array_size) {
-				TreeNode* temp = array[child_index] == -1 ? NULL : create_tree_node(array[child_index]);
+				tree_node_t* temp = array[child_index] == -1 ? NULL : create_tree_node(array[child_index]);
 				current->left = temp;
 				enqueue(&queue, temp);
 			}
 
 			child_index++;
 			if (child_index < array_size) {
-				TreeNode* temp = array[child_index] == -1 ? NULL : create_tree_node(array[child_index]);
+				tree_node_t* temp = array[child_index] == -1 ? NULL : create_tree_node(array[child_index]);
 				current->right = temp;
 				enqueue(&queue, temp);
 			}
@@ -63,7 +63,7 @@ TreeNode* create_tree(int array[], size_t array_size) {
 	return root;
 }
 
-void display_preorder(TreeNode* root) {
+void display_preorder(tree_node_t* root) {
 	if (root != NULL) {
 		printf("%d ", root->value);
 		display_preorder(root->left);
@@ -71,7 +71,7 @@ void display_preorder(TreeNode* root) {
 	}
 }
 
-void display_inorder(TreeNode* root) {
+void display_inorder(tree_node_t* root) {
 	if (root != NULL) {
 		display_inorder(root->left);
 		printf("%d ", root->value);
@@ -79,7 +79,7 @@ void display_inorder(TreeNode* root) {
 	}
 }
 
-void display_postorder(TreeNode* root) {
+void display_postorder(tree_node_t* root) {
 	if (root != NULL) {
 		display_postorder(root->left);
 		display_postorder(root->right);
@@ -87,7 +87,7 @@ void display_postorder(TreeNode* root) {
 	}
 }
 
-void display_preorder_iter(const TreeNode* root) {
+void display_preorder_iter(const tree_node_t* root) {
 	if (root == NULL)
 		return;
 	
@@ -97,7 +97,7 @@ void display_preorder_iter(const TreeNode* root) {
 	push(&stack, root);
 
 	while (stack.top != NULL) {
-		TreeNode* current = pop(&stack);
+		tree_node_t* current = pop(&stack);
 		printf("%d, ", current->value);
 
 		if (current->right != NULL)
@@ -107,14 +107,14 @@ void display_preorder_iter(const TreeNode* root) {
 	}
 }
 
-void display_inorder_iter(const TreeNode* root) {
+void display_inorder_iter(const tree_node_t* root) {
 	if (root == NULL)
 		return;
 
 	Stack stack;
 	init_stack(&stack);
 
-	TreeNode* current = root;
+	tree_node_t* current = root;
 	do {
 		if (current != NULL) {
 			push(&stack, current);
@@ -128,14 +128,14 @@ void display_inorder_iter(const TreeNode* root) {
 	} while (current != NULL && stack.top != NULL);
 }
 
-void display_postorder_iter(const TreeNode* root) {
+void display_postorder_iter(const tree_node_t* root) {
 	if (root == NULL)
 		return;
 
 	Stack stack;
 	init_stack(&stack);
 
-	TreeNode* current = root;
+	tree_node_t* current = root;
 
 	do {
 		if (current != NULL) {
@@ -147,7 +147,7 @@ void display_postorder_iter(const TreeNode* root) {
 		else {
 			current = pop(&stack);
 			if (current->right == peek(&stack, 0)) {
-				TreeNode* temp = pop(&stack);
+				tree_node_t* temp = pop(&stack);
 				push(&stack, current);
 				current = temp;
 			}
@@ -160,7 +160,7 @@ void display_postorder_iter(const TreeNode* root) {
 	} while (stack.top != NULL);
 }
 
-void rdisplay_level_order(const TreeNode* root, Stack* stack) {
+void rdisplay_level_order(const tree_node_t* root, stack_t* stack) {
 	if (root == NULL || stack == NULL)
 		return;
 
@@ -174,7 +174,7 @@ void rdisplay_level_order(const TreeNode* root, Stack* stack) {
 	rdisplay_level_order(pop(stack), stack);
 }
 
-void display_level_order(const TreeNode* root) {
+void display_level_order(const tree_node_t* root) {
 	if (root == NULL)
 		return;
 
@@ -184,14 +184,14 @@ void display_level_order(const TreeNode* root) {
 	rdisplay_level_order(root, &stack);
 }
 
-void display_level_order_iter(const TreeNode* root) {
+void display_level_order_iter(const tree_node_t* root) {
 	if (root == NULL)
 		return;
 
 	double_queue_node_t queue;
 	init_double_queue(&queue);
 
-	TreeNode* current = root;
+	tree_node_t* current = root;
 	do {
 		printf("%d, ", current->value);
 		if (current->left != NULL)
@@ -202,7 +202,7 @@ void display_level_order_iter(const TreeNode* root) {
 	} while (current != NULL);
 }
 
-size_t tree_height_iter(const TreeNode* root) {
+size_t tree_height_iter(const tree_node_t* root) {
 	if (root == NULL)
 		return 0;
 
@@ -212,7 +212,7 @@ size_t tree_height_iter(const TreeNode* root) {
 	size_t tree_height = 0;
 	size_t current_layer_size = 0;
 	size_t next_layer_size = 0;
-	TreeNode* current = root;
+	tree_node_t* current = root;
 	do {
 		if (current->left != NULL) {
 			enqueue_double(&queue, current->left);
@@ -236,7 +236,7 @@ size_t tree_height_iter(const TreeNode* root) {
 
 }
 
-size_t tree_height(const TreeNode* root) {
+size_t tree_height(const tree_node_t* root) {
 	if (root == NULL)
 		return 0;
 	size_t left_size = tree_height(root->left);
@@ -247,7 +247,7 @@ size_t tree_height(const TreeNode* root) {
 	return right_size + 1;
 }
 
-size_t tree_count_iter(const TreeNode* root) {
+size_t tree_count_iter(const tree_node_t* root) {
 	if (root == NULL)
 		return 0;
 
@@ -255,7 +255,7 @@ size_t tree_count_iter(const TreeNode* root) {
 	init_double_queue(&queue);
 
 	size_t node_count = 0;
-	TreeNode* current = root;
+	tree_node_t* current = root;
 	do {
 		node_count++;
 		if (current->left != NULL)
@@ -268,13 +268,13 @@ size_t tree_count_iter(const TreeNode* root) {
 	return node_count;
 }
 
-size_t tree_count(const TreeNode* root) {
+size_t tree_count(const tree_node_t* root) {
 	if (root != NULL)
 		return tree_count(root->left) + tree_count(root->right) + 1;
 	return 0;
 }
 
-size_t count_leaf_nodes(const TreeNode* root) {
+size_t count_leaf_nodes(const tree_node_t* root) {
 	if (root == NULL)
 		return NULL;
 
@@ -284,14 +284,14 @@ size_t count_leaf_nodes(const TreeNode* root) {
 	return count_leaf_nodes(root->left) + count_leaf_nodes(root->right);
 }
 
-size_t count_leaf_nodes_iter(const TreeNode* root) {
+size_t count_leaf_nodes_iter(const tree_node_t* root) {
 	if (root == NULL)
 		return NULL;
 
 	double_queue_t queue;
 	init_double_queue(&queue);
 
-	TreeNode* current = root;
+	tree_node_t* current = root;
 	size_t leaf_count = 0;
 	do {
 		if (current->left != NULL)

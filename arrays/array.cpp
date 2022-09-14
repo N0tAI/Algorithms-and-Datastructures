@@ -145,16 +145,3 @@ public:
 
 	}
 };
-
-int main() {
-	cout << "Set array size: " << endl;
-	size_t size = 0;
-	cin >> size;
-	
-	Array<int> arr(size);
-
-	for (size_t i = 0; i < size; i++) {
-		cout << "Enter an integer" << endl;
-		cin >> arr[i];
-	}
-}
